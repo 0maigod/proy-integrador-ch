@@ -1,0 +1,8 @@
+body {
+  background: #eecda3;
+  background: -webkit-linear-gradient(to right, #daeea3, #af62ef);
+  background: linear-gradient(to right, #eecda3, #ef629f);
+  min-height: 100vh;
+}
+
+h1 { color: white; font-family: arial; font-size: 1em; font-weight: bold; }
