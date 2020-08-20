@@ -1,113 +1,126 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <script src="arrays.js" defer></script>
-  <script src="funciones.js" defer></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maqueta del proyecto Integrador</title>
+	<title>Bienvenido!!</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+
+	<script>
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyAooPrkxFq9cRvWKaoUEF2uzek03f8_7ZQ",
+		authDomain: "flash-chat-5222c.firebaseapp.com",
+		databaseURL: "https://flash-chat-5222c.firebaseio.com",
+		projectId: "flash-chat-5222c",
+		storageBucket: "flash-chat-5222c.appspot.com",
+		messagingSenderId: "906728374758",
+		appId: "1:906728374758:web:18cd6533096a46078b9627",
+		measurementId: "G-THCXPWL2XG"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	firebase.analytics();
+	</script>
+	<script src="js/autenticacion.js"></script>
+
 </head>
 <body>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3 style="color: rgba(0, 0, 0, 0.918);">Bienvenido!</h3>
+				<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-facebook-square fa-lg"></i></span>
+					<span><i class="fab fa-google-plus-square fa-lg"></i></span>
+					<span><i class="fab fa-twitter-square fa-lg"></i></span>
+				</div>
+			</div>
+			<div class="card-body ">
+				<form id="form-autenticacion">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" name="email" class="form-control" placeholder="usuario@usuario.com" id="email">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" name="password" class="form-control" placeholder="usuario" id="password">
+					</div>
+					<div class="row align-items-center remember">
+						<input type="checkbox" class="tex-rosa">Recordarme.
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Entrar" class="btn float-right login_btn rosa" href="#">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links" >
+					¿No tiene una cuenta?<a href="#" data-toggle="modal" data-target="#regModal" class="tex-rosa">¡Haga una!</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#" class="tex-rosa">¿Olvidó su contraseña?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-    <div class="px-4 px-lg-0">
-    <!-- Encabezado -->
-    <div class="container text-white py-5 text-center">
-    <h1 class="display-3">Tienda Natural</h1>
-    <h5 class="lead">Almacén virtual de productos naturales.<br>Del productor al consumidor </h5>
-    </div>
-    <!-- Fin -->
 
-    <div class="pb-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-
-          <!-- Tabla del shopping cart -->
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="p-2 px-3 text-uppercase">Producto</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Precio</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Cantidad</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Quitar</div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row" class="border-0">
-                    <div class="p-2">
-                      <img src=img/porotos_negros.jpg alt="" width="300" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Porotos negros</a></h5>
-                        <spam class="text-muted font-weight-normal font-italic d-block"> Contienen una gran cantidad de proteínas.</spam>
-                        <p class="text-muted font-weight-normal font-italic d-block"> Muy poca grasa saturada y nada de colesterol.</p>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="border-0 align-middle"><strong>$79.00</strong></td>
-                  <td class="border-0 align-middle"><strong>3</strong></td>
-                  <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="p-2">
-                      <img src="img/harina_integral.jpg" alt="" width="300" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Harina Integral</a></h5>
-                        <spam class="text-muted font-weight-normal font-italic">Harina de grano entero de trigo.</spam>
-                        <p class="text-muted font-weight-normal font-italic">Rica en fibra y en nutrientes. Su color es oscuro.</p>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="align-middle"><strong>$79.00</strong></td>
-                  <td class="align-middle"><strong>3</strong></td>
-                  <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="p-2">
-                      <img src="img/yamani_integral.jpg" alt="" width="300" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block">Arroz yamani</a></h5>
-                        <spam class="text-muted font-weight-normal font-italic">Es un gran productor de energía.</spam>
-                        <p class="text-muted font-weight-normal font-italic">Rico en proteínas, minerales y vitaminas.</p>
-                      </div>
-                    </div>
-                    <td class="align-middle"><strong>$79.00</strong></td>
-                    <td class="align-middle"><strong>3</strong></td>
-                    <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- Fin -->
-
-        </div>
-      </div>
-      <a href="check_out.html" class="btn btn-dark rounded-pill py-2 btn-block">Cerrar la compra.</a>
-      
-
-    </div>
-    </div>
-    </div>
-
+<div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+				<h3 class="tex-negro">¡Cree su cuenta!</h3>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			
+			<div class="modal-body">
+				<div class="card-body">
+					<form id="form-autenticacion">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="email" class="form-control" placeholder="usuario@usuario.com" id="emailR">
+							
+						</div>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" name="password" class="form-control" placeholder="usuario" id="passwordR">
+						</div>
+						<div class="form-group">
+							<!-- <input type="submit" value="Registro" class="btn float-right login_btn rosa" href="registro()"> -->
+							<button onclick="registrar()" class="btn float-right login_btn rosa">Registro</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		  </div>
+		</div>
+	  </div>
 
 </body>
 </html>

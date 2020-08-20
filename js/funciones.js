@@ -7,25 +7,27 @@ class Item {
     }
 }
 
+
 class Listados {
-    constructor(lista) {
+    constructor() {
         this.lista = [];
     }
-                       
-    createListado() {
-        var lista = [];
-        for (let i = 0; i < 4; i++) {
-                this.lista.push(new Item(productos[i], precios[i], descripciones[i], imagenes[i]));
-        }
-        return lista
-    }
-
-    getProductos = function() {
+    
+    getProductos () {
         if (productos.length > 1) {
             for (var i = 0; i < productos.length; i++) {
                 console.info(productos[i]);
             }
         }
+    }
+
+                       
+    createListado() {
+        var lista = [];
+        for (let i = 0; i < productos.length; i++) {
+                this.lista.push(new Item(productos[i], precios[i], descripciones[i], imagenes[i]));
+        }
+        return lista;
     }
 
 }
