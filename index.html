@@ -1,14 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<title>Bienvenido!!</title>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
@@ -19,108 +20,116 @@
 	<script defer src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
 
 	<script>
-	// Your web app's Firebase configuration
-	var firebaseConfig = {
-		apiKey: "AIzaSyAooPrkxFq9cRvWKaoUEF2uzek03f8_7ZQ",
-		authDomain: "flash-chat-5222c.firebaseapp.com",
-		databaseURL: "https://flash-chat-5222c.firebaseio.com",
-		projectId: "flash-chat-5222c",
-		storageBucket: "flash-chat-5222c.appspot.com",
-		messagingSenderId: "906728374758",
-		appId: "1:906728374758:web:18cd6533096a46078b9627",
-		measurementId: "G-THCXPWL2XG"
-	};
-	// Initialize Firebase
-	firebase.initializeApp(firebaseConfig);
-	firebase.analytics();
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyAooPrkxFq9cRvWKaoUEF2uzek03f8_7ZQ",
+			authDomain: "flash-chat-5222c.firebaseapp.com",
+			databaseURL: "https://flash-chat-5222c.firebaseio.com",
+			projectId: "flash-chat-5222c",
+			storageBucket: "flash-chat-5222c.appspot.com",
+			messagingSenderId: "906728374758",
+			appId: "1:906728374758:web:18cd6533096a46078b9627",
+			measurementId: "G-THCXPWL2XG"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
 	</script>
 	<script src="js/autenticacion.js"></script>
 
 </head>
+
 <body>
-<div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header">
-				<h3 style="color: rgba(0, 0, 0, 0.918);">Bienvenido!</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square fa-lg"></i></span>
-					<span><i class="fab fa-google-plus-square fa-lg"></i></span>
-					<span><i class="fab fa-twitter-square fa-lg"></i></span>
+	<div class="container">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				<div class="card-header">
+					<h3 style="color: rgba(0, 0, 0, 0.918);">Bienvenido!</h3>
+					<div class="d-flex justify-content-end social_icon">
+						<span><i class="fab fa-facebook-square fa-lg"></i></span>
+						<span><i class="fab fa-google-plus-square fa-lg"></i></span>
+						<span><i class="fab fa-twitter-square fa-lg"></i></span>
+					</div>
 				</div>
-			</div>
-			<div class="card-body ">
-				<form id="form-autenticacion">
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="text" name="email" class="form-control" placeholder="usuario@usuario.com" id="email">
-						
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input type="password" name="password" class="form-control" placeholder="usuario" id="password">
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox" class="tex-rosa">Recordarme.
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Entrar" class="btn float-right login_btn rosa" href="#">
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links" >
-					¿No tiene una cuenta?<a href="#" data-toggle="modal" data-target="#regModal" class="tex-rosa">¡Haga una!</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#" class="tex-rosa">¿Olvidó su contraseña?</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-		  <div class="modal-content">
-			<div class="modal-header">
-				<h3 class="tex-negro">¡Cree su cuenta!</h3>
-			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			  </button>
-			</div>
-			
-			<div class="modal-body">
-				<div class="card-body">
+				<div class="card-body ">
 					<form id="form-autenticacion">
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="email" class="form-control" placeholder="usuario@usuario.com" id="emailR">
-							
+							<input type="text" name="email" class="form-control" placeholder="usuario@usuario.com"
+								id="email">
+
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="password" class="form-control" placeholder="usuario" id="passwordR">
+							<input type="password" name="password" class="form-control" placeholder="usuario"
+								id="password">
+						</div>
+						<div class="row align-items-center remember">
+							<input type="checkbox" class="tex-rosa">Recordarme.
 						</div>
 						<div class="form-group">
-							<!-- <input type="submit" value="Registro" class="btn float-right login_btn rosa" href="registro()"> -->
-							<button onclick="registrar()" class="btn float-right login_btn rosa">Registro</button>
+							<input type="submit" value="Entrar" class="btn float-right login_btn rosa" href="#">
 						</div>
 					</form>
 				</div>
+				<div class="card-footer">
+					<div class="d-flex justify-content-center links">
+						¿No tiene una cuenta?<a href="#" data-toggle="modal" data-target="#regModal"
+							class="tex-rosa">¡Haga una!</a>
+					</div>
+					<div class="d-flex justify-content-center">
+						<a href="#" class="tex-rosa">¿Olvidó su contraseña?</a>
+					</div>
+				</div>
 			</div>
-		  </div>
 		</div>
-	  </div>
+	</div>
+
+
+	<div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="tex-negro">¡Cree su cuenta!</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<div class="card-body">
+						<form id="form-autenticacion">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-user"></i></span>
+								</div>
+								<input type="text" name="email" class="form-control" placeholder="usuario@usuario.com"
+									id="emailR">
+
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input type="password" name="password" class="form-control" placeholder="usuario"
+									id="passwordR">
+							</div>
+							<div class="form-group">
+								<!-- <input type="submit" value="Registro" class="btn float-right login_btn rosa" href="registro()"> -->
+								<button onclick="registrar()" class="btn float-right login_btn rosa">Registro</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
+
 </html>

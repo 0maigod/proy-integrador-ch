@@ -5,6 +5,53 @@ body {
   min-height: 100vh;
 }
 
+.navBar {
+  /* height: 8vh; */
+  padding: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(244, 217, 255);
+}
+
+.navLinks {
+  display: flex;
+}
+
+.navLinks li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  position: relative;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+}
+
+.navLinks li:hover {
+  background-color: rgba(165, 165, 165, 0.397);
+  border-radius: 50%;
+}
+
+.navLinks li i {
+  font-size: 2rem;  
+}
+
+.cartCounter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 30px;
+  top: 25px;
+  height: 30px;
+  width: 30px;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: rgb(202, 134, 241);
+}
+
 /* h1 {font-family: arial; font-size: 1em; font-weight: bold; } */
 
 h1 {
@@ -19,6 +66,13 @@ h1 {
      1px -1px 0 rgb(255, 180, 180),
      -1px 1px 0 rgb(255, 255, 255),
       1px 1px 0 rgb(255, 255, 255);
+}
+
+.descripcion {
+  color: rgb(149, 149, 149);
+  display: block;
+  font-style: italic;
+  font-weight: normal;
 }
 
 
@@ -47,7 +101,7 @@ color: rgba(0, 0, 0, 0.918);
 
 html,body{
 background-position: center;
-background-image: url('img/vegetables02.jpg');
+background-image: url('/img/vegetables02.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;
