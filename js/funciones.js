@@ -8,8 +8,26 @@ class Item {
   }
 }
 
+// class Cart {
+//   constructor() {
+//     this.products = [];
+//   }
+
+//   addProductToCart(product) {}
+
+//   removeProductFromCart(product) {}
+
+//   precioTotal() {}
+// }
+
+var productos;
+
 window.onload = () => {
   let objFromJSON = JSON.parse(dbProdJSON);
+
+  const form = document.getElementById("searchForm");
+  const searchInput = document.getElementById("searchInput");
+
   let productos = objFromJSON.map((object) => {
     return new Item(
       object.producto,
@@ -19,34 +37,42 @@ window.onload = () => {
       object.stock
     );
   });
+
+  form.addEventListener("submit", () => {
+    event.preventDefault();
+
+    let busqueda = searchInput.value;
+
+    let productosBuscados = productos.filter((element) => {
+      return element.producto.toLowerCase().includes(busqueda.toLowerCase());
+    });
+
+    contenedorProductos.innerHTML = "";
+
+    productosBuscados.forEach((producto) => {
+      contenedorProductos.appendChild(crearTarjeta(producto));
+    });
+
+    console.log(searchInput.value);
+  });
+
   const contenedorProductos = document.getElementById("contenedorProductos");
+
   productos.forEach((element) => {
-    // contenedorProductos.innerHTML += crearTarjeta(element);
     contenedorProductos.appendChild(crearTarjeta(element));
   });
-  console.log(contenedorProductos);
 };
 
-// function crearTarjeta(element) {
-//   return `<tr>
-//     <th scope="row">
-//       <div class="p-2">
-//         <img src="${element.imagen}" alt="${element.producto}" width="300"
-//           class="img-fluid rounded shadow-sm">
-//         <div class="ml-3 d-inline-block align-middle">
-//           <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block">${element.producto}</a></h5>
-//           <p class="descripcion">${element.descripcion}</p>
-//         </div>
-//       </div>
-//     <td class="align-middle"><strong>$${element.precio}</strong></td>
-//     <td class="align-middle"><strong>3</strong></td>
-//     <td class="align-middle"><a onclick="" class="text-dark"><i class="fa fa-trash"></i></a>
-//     </td>
-// </tr>`;
-// }
+function addToCart(element) {
+  let contador = document.getElementById("cartCounter");
+  let contNum = parseInt(contador.innerHTML);
+  contador.innerHTML = contNum + 1;
+  console.log(element);
+}
 
 function crearTarjeta(element) {
-  let contenedor = crearComponente("tr");
+  let contenedor = document.createElement("tr");
+  contenedor.id = element.id;
   let tarjProd = crearComponente("div", "p-2");
   let img = crearComponente("img", "img-fluid rounded shadow-sm");
   img.src = element.imagen;
@@ -64,7 +90,9 @@ function crearTarjeta(element) {
   let td03 = crearComponente("td", "align-middle");
   let botonAdd = crearComponente("button", "text-dark");
   botonAdd.innerHTML = `<i class="fa fa-trash"></i>`;
-  botonAdd.addEventListener("click", addToCart);
+  botonAdd.addEventListener("click", () => {
+    addToCart(element);
+  });
   tarjProd.appendChild(img);
   tarjProd.appendChild(tarjDescr);
   tarjDescr.appendChild(botones);
@@ -83,30 +111,9 @@ function crearComponente(tag, classes) {
   return componente;
 }
 
-function addToCart() {
-  console.log("ha presionado el boton");
-}
-
 // class ProductOnCart {
 //     constructor(product) {
 //         this.product = product;
 //         this.cantidad = 0;
-//     }
-// }
-// class Cart {
-//     constructor() {
-//         this.products = []
-//     }
-
-//     addProductToCart(product) {
-
-//     }
-
-//     removeProductFromCart(product) {
-
-//     }
-
-//     precioTotal() {
-
 //     }
 // }
