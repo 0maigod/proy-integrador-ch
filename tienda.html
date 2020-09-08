@@ -56,13 +56,72 @@
         </form>
         <ul class="navLinks">
           <li id="cartIcon" class="cart">
-            <i class="large material-icons">shopping_cart</i>
+            <a
+              type="button"
+              class="large material-icons open-modal"
+              data-open="modal1"
+              >shopping_cart</a
+            >
             <div id="cartCounter" class="cartCounter">0</div>
           </li>
           <li><i class="large material-icons">account_circle</i></li>
         </ul>
       </nav>
       <!-- Fin -->
+      <!-- modal -->
+      <div class="modal" id="modal1">
+        <div class="modal-dialog">
+          <header class="modal-header">
+            The header of the first modal
+            <button class="close-modal" aria-label="close modal" data-close>
+              ✕
+            </button>
+          </header>
+          <section class="modal-content">
+            <p>
+              <strong
+                >Press ✕, ESC, or click outside of the modal to close it</strong
+              >
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
+              repellendus reprehenderit accusamus totam ratione! Nesciunt, nemo
+              dolorum recusandae ad ex nam similique dolorem ab perspiciatis
+              qui. Facere, dignissimos. Nemo, ea.
+            </p>
+            <p>
+              Nor again is there anyone who loves or pursues or desires to
+              obtain pain of itself, because it is pain, but because
+              occasionally circumstances occur in which toil and pain can
+              procure him some great pleasure. To take a trivial example, which
+              of us ever undertakes laborious physical exercise, except to
+              obtain some advantage from it? But who has any right to find fault
+              with a man who chooses to enjoy a pleasure that has no annoying
+              consequences, or one who avoids a pain that produces no resultant
+              pleasure
+            </p>
+            <p>
+              Nullam vitae enim vel diam elementum tincidunt a eget metus.
+              Curabitur finibus vestibulum rutrum. Vestibulum semper tellus
+              vitae tortor condimentum porta. Sed id ex arcu. Vestibulum
+              eleifend tortor non purus porta dapibus
+            </p>
+            <p>
+              Nor again is there anyone who loves or pursues or desires to
+              obtain pain of itself, because it is pain, but because
+              occasionally circumstances occur in which toil and pain can
+              procure him some great pleasure. To take a trivial example, which
+              of us ever undertakes laborious physical exercise, except to
+              obtain some advantage from it? But who has any right to find fault
+              with a man who chooses to enjoy a pleasure that has no annoying
+              consequences, or one who avoids a pain that produces no resultant
+              pleasure
+            </p>
+          </section>
+          <footer class="modal-footer">The footer of the first modal</footer>
+        </div>
+      </div>
+      <!-- Fin modal -->
       <div class="pb-5">
         <div class="container">
           <div class="row">
@@ -79,10 +138,10 @@
                         <div class="py-2 text-uppercase">Precio</div>
                       </th>
                       <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase">Cantidad</div>
+                        <div class="py-2 text-uppercase">Stock</div>
                       </th>
                       <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase">Quitar</div>
+                        <div class="py-2 text-uppercase">Agregar</div>
                       </th>
                     </tr>
                   </thead>
