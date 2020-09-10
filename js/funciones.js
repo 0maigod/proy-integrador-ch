@@ -17,15 +17,13 @@ class Carrito {
     this.items.push(producto);
   }
 
-  removeProducto(producto) { }
+  removeProducto(producto) {}
 
-  precioTotal() { }
+  precioTotal() {}
 }
 
 var productos;
 var miCarrito = new Carrito();
-
-// window.onload = () => {
 const form = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
 
@@ -41,14 +39,11 @@ productos = objFromJSON.map((object) => {
   );
 });
 
-// });
-
 const contenedorProductos = document.getElementById("contenedorProductos");
 
 productos.forEach((element) => {
   contenedorProductos.appendChild(crearTarjeta(element));
 });
-// };
 
 function contador(element) {
   let contador = document.getElementById("cartCounter");
@@ -57,7 +52,6 @@ function contador(element) {
 
 function crearTarjeta(element) {
   let contenedor = document.createElement("tr");
-  // contenedor.id = element.id;
   let tarjProd = crearComponente("div", "p-2");
   let img = crearComponente("img", "img-fluid rounded shadow-sm");
   img.src = element.imagen;
@@ -105,37 +99,96 @@ function crearComponente(tag, classes) {
   return componente;
 }
 
-const openEls = document.querySelectorAll("[data-open]");
-const closeEls = document.querySelectorAll("[data-close]");
-const isVisible = "is-visible";
-
-for (const el of openEls) {
-  el.addEventListener("click", function () {
-    const modalId = this.dataset.open;
-    document.getElementById(modalId).classList.add(isVisible);
-  });
+function crearTarjetaCarrito(element) {
+  let contenedor = $("<div>", {
+    class: "row",
+  })
+    .append(
+      $("<div>", {
+        class: "col-5",
+      }).append(
+        $("<img>", {
+          class: "rounded",
+          src: element.imagen,
+          alt: element.producto,
+          width: "100%",
+        })
+      )
+    )
+    .append(
+      $("<div>", {
+        class: "col-4 my-auto",
+      })
+        .append(
+          $("<h5>", {
+            class: "mb-0 text-dark carr-prod",
+            text: element.producto,
+          })
+        )
+        .append(
+          $("<h5>", {
+            class: "mb-0 text-dark carr-precio",
+            text: "c/u $" + element.precio,
+          })
+        )
+    )
+    .append(
+      $("<div>", {
+        class: "col-3 my-auto",
+      })
+        .append(
+          $("<a>", {
+            class: "material-icons",
+            text: "add_circle_outline",
+          })
+        )
+        .append(
+          $("<a>", {
+            class: "material-icons",
+            text: "remove_circle_outline",
+          })
+        )
+    )
+    .append(
+      $("<div>", {
+        class: "row border mx-auto",
+        width: "100%",
+        height: 15,
+      })
+    );
+  return contenedor;
 }
 
-for (const el of closeEls) {
-  el.addEventListener("click", function () {
-    this.parentElement.parentElement.parentElement.classList.remove(isVisible);
-  });
-}
+// Modal Carrito de compras.
 
-document.addEventListener("click", (e) => {
-  if (e.target == document.querySelector(".modal.is-visible")) {
-    document.querySelector(".modal.is-visible").classList.remove(isVisible);
+const button = document.querySelector("#cartIcon");
+const popup = document.querySelector(".popup-wrapper");
+const close = document.querySelector(".popup-close");
+
+button.addEventListener("click", () => {
+  $(".popup-content").empty();
+  $(".popup-wrapper").show();
+  console.log(miCarrito.items);
+  miCarrito.items.forEach((element) => {
+    $(".popup-content").append(crearTarjetaCarrito(element));
+  });
+});
+
+popup.addEventListener("click", (e) => {
+  // console.log(e.target.classList);
+  if (e.target.classList == "popup-wrapper") {
+    $(".popup-wrapper").hide();
   }
 });
 
 document.addEventListener("keyup", (e) => {
-  // if we press the ESC
-  if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
-    document.querySelector(".modal.is-visible").classList.remove(isVisible);
+  // cerrar presionando ESC
+  if (e.key == "Escape") {
+    popup.style.display = "none";
   }
 });
 
-
+//Formulario de busqueda
 form.addEventListener("submit", () => {
   event.preventDefault();
 
@@ -153,10 +206,3 @@ form.addEventListener("submit", () => {
 
   console.log(searchInput.value);
 });
-
-// class ProductOnCart {
-//     constructor(product) {
-//         this.product = product;
-//         this.cantidad = 0;
-//     }
-// }

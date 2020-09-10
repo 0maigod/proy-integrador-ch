@@ -1,3 +1,12 @@
+:root {
+  --lightgray: #fabfff;
+  --blue: steelblue;
+  --white: #fff;
+  --black: rgba(0, 0, 0, 0.8);
+  --rosa: rgba(251, 50, 225, 0.918);
+  --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
+}
+
 body {
   background: #eecda3;
   background: -webkit-linear-gradient(to right, #daeea3, #af62ef);
@@ -11,7 +20,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(244, 217, 255);
+  background-color: var(--lightgray);
 }
 
 .navLinks {
@@ -36,6 +45,12 @@ body {
 
 .navLinks li i {
   font-size: 2rem;
+  color: black;
+}
+
+.navLinks li a {
+  font-size: 2rem;
+  color: black;
 }
 
 .cartCounter {
@@ -49,14 +64,12 @@ body {
   width: 30px;
   font-weight: bold;
   border-radius: 50%;
-  background-color: rgb(202, 134, 241);
+  background-color: var(--rosa);
 }
-
-/* h1 {font-family: arial; font-size: 1em; font-weight: bold; } */
 
 h1 {
   -webkit-text-stroke: 1px rgb(251, 209, 255);
-  color: rgb(255, 208, 255);
+  color: var(--lightgray);
   font-family: arial;
   font-size: 2em;
   font-weight: bold;
@@ -70,7 +83,6 @@ h1 {
   display: block;
   font-style: italic;
   font-weight: normal;
-  /* max-width: 20rem; */
   width: 15rem;
 }
 
@@ -81,7 +93,7 @@ h1 {
 }
 
 .rosa {
-  background-color: rgba(251, 50, 225, 0.918);
+  background-color: var(--rosa);
 }
 
 .tex-blanco {
@@ -93,7 +105,7 @@ h1 {
 }
 
 .tex-rosa {
-  color: rgba(251, 50, 225, 0.918);
+  color: var(--rosa);
   font-weight: bolder;
 }
 
@@ -126,9 +138,7 @@ body {
 .social_icon span {
   font-size: xx-large;
   margin-left: 10px;
-  /* color:rgba(63, 63, 63, 0.8); */
   color: rgb(255, 255, 255);
-  /* color: #FFC312; */
 }
 
 .social_icon span:hover {
@@ -148,8 +158,6 @@ body {
 
 .input-group-prepend span {
   width: 50px;
-  /* background-color: #FFC312; */
-  /* background-color: rgba(251, 50, 225, 0.918); */
   color: black;
   border: 0 !important;
 }
@@ -160,7 +168,7 @@ input:focus {
 }
 
 .remember {
-  color: rgba(251, 50, 225, 0.918);
+  color: var(--rosa);
 }
 
 .remember input {
@@ -189,14 +197,6 @@ input:focus {
   margin-left: 4px;
 }
 
-:root {
-  --lightgray: #efefef;
-  --blue: steelblue;
-  --white: #fff;
-  --black: rgba(0, 0, 0, 0.8);
-  --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
-}
-
 /* * {
   padding: 0;
   margin: 0;
@@ -206,65 +206,71 @@ input:focus {
   text-align: center;
 }
 
-.open-modal {
-  -webkit-appearance: none;
-  /* color: var(--black); */
-  color: black;
-}
-
 /* MODAL
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.modal {
+
+button {
+  display: block;
+  margin: 20px auto;
+  background: rgb(243, 149, 255);
+  color: white;
+  border: 0;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: palevioletred;
+  transition: all 0.2s;
+}
+.carr-precio {
+  font-size: 2em;
+}
+
+.carr-prod {
+  font-size: 1em;
+}
+
+.popup-wrapper {
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  background: var(--black);
-  cursor: pointer;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.35s ease-in;
+  width: 100%;
+  height: 100%;
 }
 
-.modal.is-visible {
-  visibility: visible;
-  opacity: 1;
-}
-
-.modal-dialog {
+.popup {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  width: 100%;
+  max-width: 50%;
+  background: white;
+  margin: 10% auto;
+  padding: 20px;
   position: relative;
-  max-width: 800px;
-  max-height: 80vh;
-  border-radius: 5px;
-  background: var(--white);
-  overflow: auto;
-  cursor: default;
 }
 
-.modal-dialog > * {
-  padding: 1rem;
+.popup a {
+  background: salmon;
+  color: white;
+  text-decoration: none;
+  padding: 6px 10px;
+  margin: 5px auto;
+  display: block;
+  width: 50%;
 }
 
-.modal-header,
-.modal-footer {
-  background: var(--lightgray);
+.popup a:hover {
+  background: palevioletred;
+  transition: all 0.2s;
 }
 
-.modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.modal-header .close-modal {
+.popup-close {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  cursor: pointer;
   font-size: 1.5rem;
-}
-
-.modal p + p {
-  margin-top: 1rem;
 }
