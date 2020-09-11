@@ -5,6 +5,7 @@ class Item {
     this.descripcion = descripcion;
     this.imagen = imagen;
     this.stock = stock;
+    this.enCarr = 1;
   }
 }
 
@@ -14,12 +15,25 @@ class Carrito {
   }
 
   addProducto(producto) {
-    this.items.push(producto);
+    if (this.items.length != 0) {
+      this.items.forEach(function (element) {
+        if (element == producto) {
+          console.log('es el mismo producto');
+          producto.enCarr += 1;
+        }
+        else { this.items.push(producto) };
+      });
+    } else {
+      console.log('entro sin foreach');
+      this.items.push(producto)
+    };
   }
 
-  removeProducto(producto) {}
 
-  precioTotal() {}
+
+  removeProducto(producto) { }
+
+  precioTotal() { }
 }
 
 var productos;

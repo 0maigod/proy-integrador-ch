@@ -1,114 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="css/mystyle.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maqueta del proyecto Integrador</title>
-  </head>
 
-  <body>
-    <div class="px-4 px-lg-0">
-      <!-- Encabezado -->
-      <div class="container text-white py-5 text-center fondo-titulo">
-        <h1 class="display-3 tex-rosa">Tienda Natural</h1>
-        <h5 class="lead">
-          Almacén virtual de productos naturales.<br />Del productor al
-          consumidor
-        </h5>
-      </div>
-      <!-- Fin -->
-      <!-- Nav -->
-      <nav class="navBar">
-        <form id="searchForm">
-          <input type="text" id="searchInput" autocomplete="off" />
-        </form>
-        <ul class="navLinks">
-          <li id="cartIcon" class="cart">
-            <a type="button" class="large material-icons">shopping_cart</a>
-            <div id="cartCounter" class="cartCounter">0</div>
-          </li>
-          <li><i class="large material-icons">account_circle</i></li>
-        </ul>
-      </nav>
-      <!-- Fin -->
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="css/mystyle.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maqueta del proyecto Integrador</title>
+</head>
 
-      <div class="pb-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-              <!-- Tabla del shopping cart -->
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="border-0 bg-light">
-                        <div class="p-2 px-3 text-uppercase">Producto</div>
-                      </th>
-                      <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase">Precio</div>
-                      </th>
-                      <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase">Stock</div>
-                      </th>
-                      <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase">Agregar</div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody id="contenedorProductos">
-                    <!-- Aqui se inserta el listado -->
-                  </tbody>
-                </table>
-              </div>
-              <!-- Fin -->
-            </div>
-          </div>
-          <a
-            href="check_out.html"
-            class="btn rosa rounded-pill py-2 btn-block tex-blanco"
-            >Cerrar la compra.</a
-          >
-        </div>
-      </div>
-    </div>
-    <!-- Modal del carrito de compras -->
-    <div class="popup-wrapper">
-      <div class="popup">
-        <div class="popup-content"></div>
-      </div>
+<body>
+  <div class="px-4 px-lg-0">
+    <!-- Encabezado -->
+    <div class="container text-white py-5 text-center fondo-titulo">
+      <h1 class="display-3 tex-rosa">Tienda Natural</h1>
+      <h5 class="lead">
+        Almacén virtual de productos naturales.<br />Del productor al
+        consumidor
+      </h5>
     </div>
     <!-- Fin -->
-    <script src="js/arrays.js"></script>
-    <script src="js/funciones.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <!-- Nav -->
+    <nav class="navBar">
+      <form id="searchForm">
+        <input type="text" id="searchInput" autocomplete="off" />
+      </form>
+      <ul class="navLinks">
+        <li id="cartIcon" class="cart">
+          <a class="button large material-icons">shopping_cart</a>
+          <div id="cartCounter" class="cartCounter">0</div>
+        </li>
+        <li><i class="large material-icons">account_circle</i></li>
+      </ul>
+    </nav>
+    <!-- Fin -->
+
+    <div class="pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+            <!-- Tabla del shopping cart -->
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="p-2 px-3 text-uppercase">Producto</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="py-2 text-uppercase">Precio</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="py-2 text-uppercase">Stock</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="py-2 text-uppercase">Agregar</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="contenedorProductos">
+                  <!-- Aqui se inserta el listado -->
+                </tbody>
+              </table>
+            </div>
+            <!-- Fin -->
+          </div>
+        </div>
+        <a href="check_out.html" class="btn rosa rounded-pill py-2 btn-block tex-blanco">Cerrar la compra.</a>
+      </div>
+    </div>
+  </div>
+  <!-- Modal del carrito de compras -->
+  <div class="popup-wrapper">
+    <div class="popup">
+      <div class="popup-content"></div>
+    </div>
+  </div>
+  <!-- Fin -->
+  <script src="js/arrays.js"></script>
+  <script src="js/funciones.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
