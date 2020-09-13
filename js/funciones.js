@@ -9,35 +9,8 @@ class Item {
   }
 }
 
-class Carrito {
-  constructor() {
-    this.items = [];
-  }
-
-  addProducto(producto) {
-    if (this.items.length != 0) {
-      this.items.forEach(function (element) {
-        if (element == producto) {
-          console.log('es el mismo producto');
-          producto.enCarr += 1;
-        }
-        else { this.items.push(producto) };
-      });
-    } else {
-      console.log('entro sin foreach');
-      this.items.push(producto)
-    };
-  }
-
-
-
-  removeProducto(producto) { }
-
-  precioTotal() { }
-}
-
 var productos;
-var miCarrito = new Carrito();
+var miCarrito = new Map();
 const form = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
 
@@ -59,10 +32,8 @@ productos.forEach((element) => {
   contenedorProductos.appendChild(crearTarjeta(element));
 });
 
-function contador(element) {
-  let contador = document.getElementById("cartCounter");
-  contador.innerHTML = miCarrito.items.length + 1;
-}
+//-----------------------------------------
+// DIBUJAR COMPONENTES
 
 function crearTarjeta(element) {
   let contenedor = document.createElement("tr");
@@ -89,8 +60,7 @@ function crearTarjeta(element) {
   let botonAdd = crearComponente("a", "text-dark");
   botonAdd.innerHTML = `<i class="large material-icons">add_circle_outline</i>`;
   botonAdd.addEventListener("click", () => {
-    contador(element);
-    miCarrito.addProducto(element);
+    addProducto(element);
   });
 
   tarjProd.appendChild(img);
@@ -154,12 +124,18 @@ function crearTarjetaCarrito(element) {
           $("<a>", {
             class: "material-icons",
             text: "add_circle_outline",
+            click() {
+              addProducto(element);
+            },
           })
         )
         .append(
           $("<a>", {
             class: "material-icons",
             text: "remove_circle_outline",
+            click() {
+              remProducto(element);
+            },
           })
         )
     )
@@ -173,7 +149,8 @@ function crearTarjetaCarrito(element) {
   return contenedor;
 }
 
-// Modal Carrito de compras.
+//------------------------------------------
+// MODAL CARRITO DE COMPRAS.
 
 const button = document.querySelector("#cartIcon");
 const popup = document.querySelector(".popup-wrapper");
@@ -182,10 +159,9 @@ const close = document.querySelector(".popup-close");
 button.addEventListener("click", () => {
   $(".popup-content").empty();
   $(".popup-wrapper").show();
-  console.log(miCarrito.items);
-  miCarrito.items.forEach((element) => {
+  for (let element of miCarrito.keys()) {
     $(".popup-content").append(crearTarjetaCarrito(element));
-  });
+  }
 });
 
 popup.addEventListener("click", (e) => {
@@ -202,9 +178,41 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-//Formulario de busqueda
+function addProducto(producto) {
+  if (miCarrito.has(producto)) {
+    miCarrito.set(producto, miCarrito.get(producto) + 1);
+  } else {
+    miCarrito.set(producto, 1);
+  }
+  contador();
+}
+
+function remProducto(producto) {
+  (miCarrito.get(producto) > 0) ? miCarrito.set(producto, miCarrito.get(producto) - 1):null;
+  contador();
+}
+
+function precioCompra(){
+  let precio = 0;
+  for (let key of miCarrito.keys()){
+    precio = precio + key.precio
+  }
+  console.log(key.precio);
+}
+
+function contador() {
+  let contador = document.getElementById("cartCounter");
+  let items = 0;
+  for (let value of miCarrito.values()){
+    items = items + value;
+  }
+  contador.innerHTML = items;
+}
+
+//-------------------------------------
+// FORMULARIO DE BUSQUEDA
 form.addEventListener("submit", () => {
-  event.preventDefault();
+  e.preventDefault();
 
   let busqueda = searchInput.value;
 
