@@ -155,13 +155,12 @@ function crearTarjetaCarrito(element) {
 const button = document.querySelector("#cartIcon");
 const popup = document.querySelector(".popup-wrapper");
 const close = document.querySelector(".popup-close");
+const precioTotal = document.querySelector(".precio-total");
 
 button.addEventListener("click", () => {
   $(".popup-content").empty();
   $(".popup-wrapper").show();
-  for (let element of miCarrito.keys()) {
-    $(".popup-content").append(crearTarjetaCarrito(element));
-  }
+  dibujarCarrito(miCarrito);
 });
 
 popup.addEventListener("click", (e) => {
@@ -178,9 +177,18 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
+function dibujarCarrito (miCarrito) {
+  $(".popup-content").empty();
+  for (let element of miCarrito.keys()) {
+    $(".popup-content").append(crearTarjetaCarrito(element));
+  }
+  precioCompra();
+}
+
 function addProducto(producto) {
   if (miCarrito.has(producto)) {
     miCarrito.set(producto, miCarrito.get(producto) + 1);
+    dibujarCarrito(miCarrito);
   } else {
     miCarrito.set(producto, 1);
   }
@@ -188,16 +196,26 @@ function addProducto(producto) {
 }
 
 function remProducto(producto) {
-  (miCarrito.get(producto) > 0) ? miCarrito.set(producto, miCarrito.get(producto) - 1):null;
+  if (miCarrito.get(producto) > 1) { 
+    miCarrito.set(producto, miCarrito.get(producto) - 1)
+    dibujarCarrito(miCarrito)
+  } else {
+    miCarrito.delete(producto);
+    dibujarCarrito(miCarrito)};
   contador();
 }
 
 function precioCompra(){
   let precio = 0;
-  for (let key of miCarrito.keys()){
-    precio = precio + key.precio
+  precioTotal.innerText = ``;
+  for (let key of miCarrito.entries()){
+    if( key != undefined){
+    let unidad = key[0].precio;
+    let cantidad = key[1];
+    precio = precio + (unidad * cantidad)};
+    precioTotal.innerHTML = `TOTAL DE LA COMPRA:</br>$${precio}`;
   }
-  console.log(key.precio);
+
 }
 
 function contador() {
@@ -211,20 +229,20 @@ function contador() {
 
 //-------------------------------------
 // FORMULARIO DE BUSQUEDA
-form.addEventListener("submit", () => {
-  e.preventDefault();
+// form.addEventListener("submit", () => {
+//   e.preventDefault();
 
-  let busqueda = searchInput.value;
+//   let busqueda = searchInput.value;
 
-  let productosBuscados = productos.filter((element) => {
-    return element.producto.toLowerCase().includes(busqueda.toLowerCase());
-  });
+//   let productosBuscados = productos.filter((element) => {
+//     return element.producto.toLowerCase().includes(busqueda.toLowerCase());
+//   });
 
-  contenedorProductos.innerHTML = "";
+//   contenedorProductos.innerHTML = "";
 
-  productosBuscados.forEach((producto) => {
-    contenedorProductos.appendChild(crearTarjeta(producto));
-  });
+//   productosBuscados.forEach((producto) => {
+//     contenedorProductos.appendChild(crearTarjeta(producto));
+//   });
 
-  console.log(searchInput.value);
-});
+//   console.log(searchInput.value);
+// });
