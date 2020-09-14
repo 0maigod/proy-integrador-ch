@@ -12,7 +12,7 @@ class Item {
 var productos;
 var miCarrito = new Map();
 const form = document.getElementById("searchForm");
-const searchInput = document.getElementById("searchInput");
+const searchInput = document.querySelector("#searchInput");
 
 let objFromJSON = JSON.parse(dbProdJSON);
 
@@ -177,7 +177,7 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-function dibujarCarrito (miCarrito) {
+function dibujarCarrito(miCarrito) {
   $(".popup-content").empty();
   for (let element of miCarrito.keys()) {
     $(".popup-content").append(crearTarjetaCarrito(element));
@@ -196,23 +196,25 @@ function addProducto(producto) {
 }
 
 function remProducto(producto) {
-  if (miCarrito.get(producto) > 1) { 
+  if (miCarrito.get(producto) > 1) {
     miCarrito.set(producto, miCarrito.get(producto) - 1)
     dibujarCarrito(miCarrito)
   } else {
     miCarrito.delete(producto);
-    dibujarCarrito(miCarrito)};
+    dibujarCarrito(miCarrito)
+  };
   contador();
 }
 
-function precioCompra(){
+function precioCompra() {
   let precio = 0;
   precioTotal.innerText = ``;
-  for (let key of miCarrito.entries()){
-    if( key != undefined){
-    let unidad = key[0].precio;
-    let cantidad = key[1];
-    precio = precio + (unidad * cantidad)};
+  for (let key of miCarrito.entries()) {
+    if (key != undefined) {
+      let unidad = key[0].precio;
+      let cantidad = key[1];
+      precio = precio + (unidad * cantidad)
+    };
     precioTotal.innerHTML = `TOTAL DE LA COMPRA:</br>$${precio}`;
   }
 
@@ -221,7 +223,7 @@ function precioCompra(){
 function contador() {
   let contador = document.getElementById("cartCounter");
   let items = 0;
-  for (let value of miCarrito.values()){
+  for (let value of miCarrito.values()) {
     items = items + value;
   }
   contador.innerHTML = items;
@@ -229,20 +231,20 @@ function contador() {
 
 //-------------------------------------
 // FORMULARIO DE BUSQUEDA
-// form.addEventListener("submit", () => {
-//   e.preventDefault();
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-//   let busqueda = searchInput.value;
+  let busqueda = searchInput.value;
 
-//   let productosBuscados = productos.filter((element) => {
-//     return element.producto.toLowerCase().includes(busqueda.toLowerCase());
-//   });
+  let productosBuscados = productos.filter((element) => {
+    return element.producto.toLowerCase().includes(busqueda.toLowerCase());
+  });
 
-//   contenedorProductos.innerHTML = "";
+  contenedorProductos.innerHTML = "";
 
-//   productosBuscados.forEach((producto) => {
-//     contenedorProductos.appendChild(crearTarjeta(producto));
-//   });
+  productosBuscados.forEach((producto) => {
+    contenedorProductos.appendChild(crearTarjeta(producto));
+  });
 
-//   console.log(searchInput.value);
-// });
+  console.log(searchInput.value);
+});
