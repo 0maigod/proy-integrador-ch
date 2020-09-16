@@ -118,6 +118,14 @@ h1 {
   font-weight: bolder;
 }
 
+
+a:hover { COLOR:var(--rosa); TEXT-DECORATION: none; font-weight: none }
+a {
+  color: #1a1a1a;
+  text-decoration: none;
+  background-color: transparent;
+}
+
 html,
 body {
   background-position: center;
