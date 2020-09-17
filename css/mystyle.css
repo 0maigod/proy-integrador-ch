@@ -16,7 +16,9 @@ body {
 
 .navBar {
   /* height: 8vh; */
-  padding: 0 100px;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 0.5rem;
+  padding: 0 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,15 +126,16 @@ a {
   color: #1a1a1a;
   text-decoration: none;
   background-color: transparent;
+  cursor: pointer
 }
 
 html,
 body {
-  background-position: center;
+  /* background-position: center;
   background-image: url("/img/vegetables02.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   height: 100%;
   font-family: "Numans", sans-serif;
 }

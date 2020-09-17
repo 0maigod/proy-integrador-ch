@@ -14,8 +14,10 @@
 </head>
 
 <body>
+  <div class="parallax-window" data-parallax="scroll" data-image-src="img/vegetables02.jpg">
   <div class="px-4 px-lg-0">
     <!-- Encabezado -->
+    <div class="container">
     <div class="row justify-content-center">
       <div class="col-3"><img src="img/logo05b.png" alt="tienda natural" style="height: 15rem;"></div>
       <div class="col-8 my-auto">
@@ -23,20 +25,23 @@
           consumidor</h1>
       </div>
     </div>
+  </div>
     <!-- Fin -->
     <!-- Nav -->
-    <nav class="navBar">
-      <form id="searchForm">
-        <input type="text" id="searchInput" autocomplete="off" />
-      </form>
-      <ul class="navLinks">
-        <li id="cartIcon" class="cart">
-          <a class="button large material-icons">shopping_cart</a>
-          <div id="cartCounter" class="cartCounter">0</div>
-        </li>
-        <li><i class="large material-icons">account_circle</i></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <nav class="navBar">
+        <form id="searchForm">
+          <input type="text" id="searchInput" autocomplete="off" />
+        </form>
+        <ul class="navLinks">
+          <li id="cartIcon" class="cart">
+            <a class="button large material-icons">shopping_cart</a>
+            <div id="cartCounter" class="cartCounter">0</div>
+          </li>
+          <li><i class="large material-icons">account_circle</i></li>
+        </ul>
+      </nav>
+    </div>
     <!-- Fin -->
 
     <div class="pb-5">
@@ -81,12 +86,14 @@
       <div class="popup-content"></div>
     </div>
   </div>
+</div>
   <!-- Fin -->
   <script src="js/arrays.js"></script>
   <script src="js/funciones.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
+    <script src="js/parallax.js-1.5.0/parallax.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
     crossorigin="anonymous"></script>

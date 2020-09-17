@@ -6,24 +6,40 @@
       this.imagen = imagen;
       this.stock = stock;
     }
+    resStock() {
+      this.stock -= 1;
+      dibujarLista(productos, contenedorProductos);
+    }
+
+    addStock() {
+      this.stock += 1;
+      dibujarLista(productos, contenedorProductos);
+    }
   }
 
   class Carrito {
-  
-    carrito = new Map();
-    precioTotal = 0;
-    items = 0;
-
+    constructor(){
+    this.carrito = new Map();
+    this.precioTotal = 0;
+    this.items = 0;
+    };
 
     addProducto(producto) {
-      if (this.carrito.has(producto)) {
-        this.carrito.set(producto, this.carrito.get(producto) + 1);
-        dibujarCarrito(this.carrito);
-      } else {
-        this.carrito.set(producto, 1);
-      }
-      this.contador();
+      if(producto.stock > 0){
+          if (this.carrito.has(producto)) {
+            this.carrito.set(producto, this.carrito.get(producto) + 1);
+            dibujarCarrito(this.carrito);
+          } else {
+            this.carrito.set(producto, 1);
+            dibujarCarrito(this.carrito);
+          }
+          producto.resStock();
+          console.log('desde el carrito ' + producto.stock)
+        } else {
+          alert('no hay suficiente stock');
+        }
       this.precioCompra();
+      this.contador();
     }
     
     remProducto(producto) {
@@ -33,6 +49,7 @@
       } else {
         this.carrito.delete(producto);
         dibujarCarrito(this.carrito)};
+      producto.addStock();
       this.contador();
     }
     
@@ -79,10 +96,8 @@
     });
     
     const contenedorProductos = document.getElementById("contenedorProductos");
-    
-    productos.forEach((element) => {
-      contenedorProductos.appendChild(crearTarjeta(element));
-    });
+
+    dibujarLista(productos, contenedorProductos);
 
     
     //-----------------------------------------
@@ -136,7 +151,7 @@ function crearComponente(tag, classes) {
   return componente;
 }
 
-function crearTarjetaCarrito(element) {
+function crearTarjetaCarrito(element, cant) {
   let contenedor = $("<div>", {
     class: "row",
   })
@@ -159,8 +174,13 @@ function crearTarjetaCarrito(element) {
         .append(
           $("<h5>", {
             class: "mb-0 text-dark carr-prod",
-            text: `${element.producto}
-            cant.:`
+            text: `${element.producto}`
+          })
+        )
+        .append(
+          $("<h5>", {
+            class: "mb-0 text-dark carr-prod",
+            text: `cant.: ${cant}`
           })
         )
         .append(
@@ -203,6 +223,21 @@ function crearTarjetaCarrito(element) {
   return contenedor;
 }
 
+function dibujarCarrito (carrito) {
+  $(".popup-content").empty();
+  for (let element of carrito.entries()) {
+    $(".popup-content").append(crearTarjetaCarrito(element[0], element[1]));
+  }
+  miCarrito.precioCompra();
+}
+
+function dibujarLista(prods, lugar) {
+  lugar.innerHTML = '';
+  prods.forEach((element) => {
+    lugar.appendChild(crearTarjeta(element));
+  });
+}
+
 //------------------------------------------
 // MODAL CARRITO DE COMPRAS.
 
@@ -232,15 +267,6 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-
-function dibujarCarrito (carrito) {
-  $(".popup-content").empty();
-  for (let element of carrito.keys()) {
-    $(".popup-content").append(crearTarjetaCarrito(element));
-  }
-  miCarrito.precioCompra();
-}
-
 //-------------------------------------
 // FORMULARIO DE BUSQUEDA
 form.addEventListener("submit", (e) => {
@@ -254,8 +280,7 @@ form.addEventListener("submit", (e) => {
 
   contenedorProductos.innerHTML = "";
 
-  productosBuscados.forEach((producto) => {
-    contenedorProductos.appendChild(crearTarjeta(producto));
-  });
+
+  dibujarLista(productosBuscados, contenedorProductos);
 
 });
