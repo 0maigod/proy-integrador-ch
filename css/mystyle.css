@@ -80,13 +80,13 @@ body {
     1px 1px 0 rgb(255, 255, 255);
 } */
 h1 {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   margin: 1rem;
   font-size: 2rem;
   color: white;
   margin-top: auto;
   margin-bottom: auto;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .descripcion {
@@ -120,13 +120,16 @@ h1 {
   font-weight: bolder;
 }
 
-
-a:hover { COLOR:var(--rosa); TEXT-DECORATION: none; font-weight: none }
+a:hover {
+  color: var(--rosa);
+  text-decoration: none;
+  font-weight: none;
+}
 a {
   color: #1a1a1a;
   text-decoration: none;
   background-color: transparent;
-  cursor: pointer
+  cursor: pointer;
 }
 
 html,
@@ -136,6 +139,16 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed; */
+  height: 100%;
+  font-family: "Numans", sans-serif;
+}
+
+.container-index {
+  background-position: center;
+  background-image: url("/img/vegetables02.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 100%;
   font-family: "Numans", sans-serif;
 }
@@ -151,7 +164,13 @@ body {
   display: flex;
   /* padding-left: 5rem; */
   justify-content: space-around;
-   
+}
+
+.container-checkout {
+  height: 100%;
+  align-content: center;
+  position: relative;
+  opacity: 0;
 }
 
 .card {
@@ -271,7 +290,7 @@ button:hover {
   height: 100%;
 }
 
-.precio-total{
+.precio-total {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2rem;
   font-weight: bold;
@@ -291,6 +310,7 @@ button:hover {
   margin: 10% auto;
   padding: 20px;
   position: relative;
+  opacity: 0;
 }
 
 .popup a {
@@ -307,4 +327,3 @@ button:hover {
   background: palevioletred;
   transition: all 0.2s;
 }
-
