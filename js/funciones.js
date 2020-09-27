@@ -10,9 +10,11 @@ class Carrito {
       if (this.carrito.has(producto)) {
         this.carrito.set(producto, this.carrito.get(producto) + 1);
         dibujarCarrito(this.carrito);
+        this.setToLocalStorage(this.carrito);
       } else {
         this.carrito.set(producto, 1);
         dibujarCarrito(this.carrito);
+        this.setToLocalStorage(this.carrito);
       }
       producto.resStock();
     } else {
@@ -27,9 +29,11 @@ class Carrito {
     if (this.carrito.get(producto) > 1) {
       this.carrito.set(producto, this.carrito.get(producto) - 1);
       dibujarCarrito(this.carrito);
+      this.setToLocalStorage(this.carrito);
     } else {
       this.carrito.delete(producto);
       dibujarCarrito(this.carrito);
+      this.setToLocalStorage(this.carrito);
     }
     producto.addStock();
     this.precioCompra();
@@ -59,6 +63,19 @@ class Carrito {
     $("#precio-final").html(`$${final.toFixed(2)}`);
   }
 
+  setToLocalStorage(carrito) {
+    // let items = new Object();
+    // for (let key of carrito.entries()) {
+    //   let prod = key[0].producto;
+    //   let cant = key[1];
+    //   items[prod] = cant;
+    // }
+    // localStorage.setItem("miCarrito", JSON.stringify(items));
+    let items = "";
+    items = JSON.stringify(Array.from(carrito.entries()));
+    localStorage.setItem("miCarrito", items);
+  }
+
   contador() {
     let contador = document.getElementById("cartCounter");
     let sumItems = 0;
@@ -70,8 +87,9 @@ class Carrito {
   }
 }
 
+// var miCarrito = new Carrito();
+
 var productos;
-var miCarrito = new Carrito();
 const form = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
 
@@ -90,6 +108,40 @@ productos = objFromJSON.map((object) => {
 const contenedorProductos = document.getElementById("contenedorProductos");
 
 dibujarLista(productos, contenedorProductos);
+
+//-------------------------------------
+// FORMULARIO DE BUSQUEDA
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let busqueda = searchInput.value;
+
+  let productosBuscados = productos.filter((element) => {
+    return element.producto.toLowerCase().includes(busqueda.toLowerCase());
+  });
+
+  contenedorProductos.innerHTML = "";
+
+  dibujarLista(productosBuscados, contenedorProductos);
+});
+
+//----------------------------------------
+//COMPRA PREVIA
+
+var compraPrevia = localStorage.getItem("miCarrito");
+if (compraPrevia === null) {
+  miCarrito = new Carrito();
+} else {
+  miCarrito = new Carrito();
+  let objFromStorage = JSON.parse(compraPrevia);
+  objFromStorage.map((object) => {
+    producto.find((element) => {
+      element.producto === object.producto;
+      console.log("encontrado");
+    });
+    // miCarrito.addProducto(object);
+  });
+}
 
 //------------------------------------------
 // MODAL CARRITO DE COMPRAS.
@@ -154,20 +206,4 @@ document.addEventListener("keyup", (e) => {
       opacity: "0",
     });
   }
-});
-
-//-------------------------------------
-// FORMULARIO DE BUSQUEDA
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  let busqueda = searchInput.value;
-
-  let productosBuscados = productos.filter((element) => {
-    return element.producto.toLowerCase().includes(busqueda.toLowerCase());
-  });
-
-  contenedorProductos.innerHTML = "";
-
-  dibujarLista(productosBuscados, contenedorProductos);
 });
