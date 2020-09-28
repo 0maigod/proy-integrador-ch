@@ -1,94 +1,3 @@
-class Carrito {
-  carrito = new Map();
-  precioSiva = 0;
-  items = 0;
-  iva = 21;
-  costoEnvio = 15;
-
-  addProducto(producto) {
-    if (producto.stock > 0) {
-      if (this.carrito.has(producto)) {
-        this.carrito.set(producto, this.carrito.get(producto) + 1);
-        dibujarCarrito(this.carrito);
-        this.setToLocalStorage(this.carrito);
-      } else {
-        this.carrito.set(producto, 1);
-        dibujarCarrito(this.carrito);
-        this.setToLocalStorage(this.carrito);
-      }
-      producto.resStock();
-    } else {
-      alert("no hay suficiente stock");
-    }
-    this.precioCompra();
-    this.precioTotal();
-    this.contador();
-  }
-
-  remProducto(producto) {
-    if (this.carrito.get(producto) > 1) {
-      this.carrito.set(producto, this.carrito.get(producto) - 1);
-      dibujarCarrito(this.carrito);
-      this.setToLocalStorage(this.carrito);
-    } else {
-      this.carrito.delete(producto);
-      dibujarCarrito(this.carrito);
-      this.setToLocalStorage(this.carrito);
-    }
-    producto.addStock();
-    this.precioCompra();
-    this.precioTotal();
-    this.contador();
-  }
-
-  precioCompra() {
-    precioSivaTag.innerText = ``;
-    let sumPrecio = 0;
-    for (let key of this.carrito.entries()) {
-      if (key != undefined) {
-        let unidad = key[0].precio;
-        let cantidad = key[1];
-        sumPrecio = sumPrecio + unidad * cantidad;
-      }
-      this.precioSiva = sumPrecio;
-    }
-    precioSivaTag.html(`$${this.precioSiva}`);
-  }
-
-  precioTotal() {
-    let ivaFinal = this.precioSiva * (this.iva / 100);
-    let final = this.precioSiva + this.costoEnvio + ivaFinal;
-    $("#precio-envio").html(`$${this.costoEnvio}`);
-    $("#precio-iva").html(`${this.iva}%`);
-    $("#precio-final").html(`$${final.toFixed(2)}`);
-  }
-
-  setToLocalStorage(carrito) {
-    // let items = new Object();
-    // for (let key of carrito.entries()) {
-    //   let prod = key[0].producto;
-    //   let cant = key[1];
-    //   items[prod] = cant;
-    // }
-    // localStorage.setItem("miCarrito", JSON.stringify(items));
-    let items = "";
-    items = JSON.stringify(Array.from(carrito.entries()));
-    localStorage.setItem("miCarrito", items);
-  }
-
-  contador() {
-    let contador = document.getElementById("cartCounter");
-    let sumItems = 0;
-    for (let value of this.carrito.values()) {
-      sumItems = sumItems + value;
-      this.items = sumItems;
-    }
-    contador.innerHTML = this.items;
-  }
-}
-
-// var miCarrito = new Carrito();
-
 var productos;
 const form = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
@@ -134,13 +43,19 @@ if (compraPrevia === null) {
 } else {
   miCarrito = new Carrito();
   let objFromStorage = JSON.parse(compraPrevia);
-  objFromStorage.map((object) => {
-    producto.find((element) => {
-      element.producto === object.producto;
-      console.log("encontrado");
-    });
-    // miCarrito.addProducto(object);
-  });
+  for (let key in objFromStorage) {
+    let cant = objFromStorage[key];
+
+    for (let keyP of productos) {
+      let i = 0;
+      if (key == keyP.producto) {
+        while (i < parseInt(cant)) {
+          miCarrito.addProducto(keyP);
+          i++;
+        }
+      }
+    }
+  }
 }
 
 //------------------------------------------
@@ -149,7 +64,7 @@ if (compraPrevia === null) {
 const butCart = document.querySelector("#cartIcon");
 const popup = document.querySelector(".popup-wrapper");
 const close = document.querySelector(".popup-close");
-const precioSivaTag = $(".precio-siva");
+// const precioSivaTag = $(".precio-siva");
 
 butCart.addEventListener("click", () => {
   $(".popup-content").empty();
@@ -157,7 +72,6 @@ butCart.addEventListener("click", () => {
   dibujarCarrito(miCarrito.carrito);
 });
 
-// $("#finCompra").on("click", miCarrito.precioTotal());
 $("#compra").on("click", carroIn);
 
 function carroIn() {
@@ -169,22 +83,6 @@ function carroIn() {
 }
 
 $("#finCompra").on("click", checkOut);
-
-function checkOut() {
-  $("html, body").animate(
-    {
-      scrollTop: $("#finCompra").offset().top,
-    },
-    2000
-  );
-  $(".container-checkout").animate(
-    {
-      opacity: "1",
-    },
-    1000
-  );
-  miCarrito.precioTotal();
-}
 
 popup.addEventListener("click", (e) => {
   // console.log(e.target.classList);
@@ -207,3 +105,46 @@ document.addEventListener("keyup", (e) => {
     });
   }
 });
+
+//----------------------------------------------
+//FORMULARIO DE PAGO - CHECK OUT
+
+$("#seguir-comprando").on("click", seguirCompra);
+$("#abonar").on("click", abonarCompra);
+
+function checkOut() {
+  $("html, body").animate(
+    {
+      scrollTop: $("#checkout").offset().top,
+    },
+    2000
+  );
+  $(".container-checkout").animate(
+    {
+      opacity: "1",
+    },
+    1000
+  );
+  miCarrito.precioTotal();
+}
+
+function seguirCompra() {
+  $(".container-checkout").animate(
+    {
+      opacity: "0",
+    },
+    1000
+  );
+  $("html, body").animate(
+    {
+      scrollTop: $("#arriba").offset().top,
+    },
+    2000
+  );
+}
+
+function abonarCompra() {
+  localStorage.clear();
+  alert("Su pedido se encuentra en camino");
+  location.reload();
+}
